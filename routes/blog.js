@@ -1,7 +1,6 @@
-const express = require("express");
-const { create, getAllBlogs, singleBlog, remove, update } = require("../controllers/blogController");
-const router = express.Router();
-const {requireLogin} = require("../controllers/authController");
+const router = require("express").Router();
+const { create, getAllBlogs, singleBlog, remove, update } = require("../controllers/blogCtrl");
+const {requireLogin} = require("../controllers/authCtrl");
 
 // การเรียกใช้งาน
 router.post('/create', requireLogin, create);

@@ -2,9 +2,13 @@
 const mongoose = require("mongoose");
 
 const blogSchema = mongoose.Schema({
+    image: {
+        type: Object,
+        required: true
+    },
     title: {
         type: String,
-        required: true // ห้ามใส่ค่าว่าง
+        required: true
     },
     content: {
         type: {},
@@ -17,8 +21,8 @@ const blogSchema = mongoose.Schema({
     slug: {
         type: String,
         lowercase: true,
-        unique: true // ห้ามซ้ำกัน
+        unique: true
     }
-}, {timestamps: true}) // ระบุเวลา
+}, {timestamps: true})
 
 module.exports = mongoose.model("Blog", blogSchema);

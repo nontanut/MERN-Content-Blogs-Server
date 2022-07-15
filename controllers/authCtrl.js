@@ -1,14 +1,14 @@
 const jwt = require("jsonwebtoken");
 const expressJWT = require("express-jwt");
 
-exports.login = (req, res) => {
+exports.login = async (req, res) => {
     const {username, password} = req.body;
     // เทียบแค่เงื่อนไขเดียว หรือจะเทียบทั้งสองก็ได้
     if(password === process.env.PASSWORD) {
         const token = jwt.sign({username}, process.env.JWT_SECRET, {expiresIn:"1d"})
         return res.json({token, username});
     }else{
-            return res.status(400).json({error: "รหัสผ่านไม่ถูกต้อง"})
+        return res.status(400).json({error: "รหัสผ่านไม่ถูกต้อง"})
     }
 }
 
